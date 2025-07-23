@@ -1,0 +1,16 @@
+<div class="ttt-board">
+  <div
+    class="ttt-cell"
+    *ngFor="let cell of board; let idx = index"
+    [class.filled]="!!cell"
+    [class.winner]="isWinningCell(idx)"
+    (click)="handleCellClick(idx)"
+    [attr.aria-label]="'Cell ' + (idx+1) + (cell ? ', filled with ' + cell : ', empty')"
+    tabindex="0"
+    [attr.disabled]="disabled ? true : null"
+    [style.pointer-events]="disabled ? 'none' : 'auto'"
+  >
+    <span *ngIf="cell === 'X'" class="cell-content x">X</span>
+    <span *ngIf="cell === 'O'" class="cell-content o">O</span>
+  </div>
+</div>
